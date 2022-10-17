@@ -4,9 +4,9 @@ import shutil
 
 
 class Parser:
-    extensions = List[str]
+    extensions: List[str] = []
 
-    def valid_extensions(self, extension):
+    def valid_extension(self, extension):
 
         if extension in self.extensions:
             return true
@@ -26,7 +26,7 @@ class Parser:
             return file.write(content)
 
     def copy(self, path, source, dest):
-        copy2(source, dest / path.relative_to(source))
+        shutil.copy2(source, dest / path.relative_to(source))
 
     class ResourceParser(Parser):
         extensions = [".jpg", ".png", ".gif", ".css", ".html"]
